@@ -25,22 +25,24 @@ import audioFile from './assets/audio.mp3';
 
 function App() {
   const audioRef = useRef(null);
+  const [audioMuted, setAudioMuted] = useState(true);
 
-  useEffect(() => {
-    // Start playing the audio when the component mounts
+  const handleAudioInteraction = () => {
     if (audioRef.current) {
       audioRef.current.play();
+      setAudioMuted(false);
     }
-  }, []);
+  };
 
   return (
     <div className="container">
       <h1 className="heading">Spacey</h1>
       <p className="subheading">A swiper with a space theme.</p>
-      <audio ref={audioRef} controls={false} loop>
+      <audio ref={audioRef} controls={false} loop muted={audioMuted}>
         <source src={audioFile} type="audio/mp3" />
         Your browser does not support the audio tag.
       </audio>
+    </div>
 
       <Swiper
         effect={'coverflow'}
