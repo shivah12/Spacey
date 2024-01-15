@@ -21,7 +21,7 @@ import slide_image_7 from './assets/images/img_7.png';
 import slide_image_8 from './assets/images/img_8.png';
 
 // Import the audio file
-import audioFile from './assets/audio.mp3';
+import audioFile from './audio.mp3';
 
 function App() {
   const audioRef = useRef(null);
