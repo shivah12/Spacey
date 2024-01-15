@@ -25,24 +25,22 @@ import audioFile from './assets/audio.mp3';
 
 function App() {
   const audioRef = useRef(null);
-  const [audioMuted, setAudioMuted] = useState(true);
 
-  const handleAudioInteraction = () => {
+  useEffect(() => {
+    // Start playing the audio when the component mounts
     if (audioRef.current) {
       audioRef.current.play();
-      setAudioMuted(false);
     }
-  };
+  }, []);
 
   return (
     <div className="container">
       <h1 className="heading">Spacey</h1>
       <p className="subheading">A swiper with a space theme.</p>
-      <audio ref={audioRef} controls={false} loop muted={audioMuted}>
+      <audio ref={audioRef} controls={false} loop>
         <source src={audioFile} type="audio/mp3" />
         Your browser does not support the audio tag.
       </audio>
-    </div>
 
       <Swiper
         effect={'coverflow'}
@@ -97,6 +95,7 @@ function App() {
           <img src={slide_image_8} alt="slide_image" />
           <h2>Neptune</h2>
         </SwiperSlide>
+        
 
         <div className="slider-controler">
           <div className="swiper-button-prev slider-arrow">
